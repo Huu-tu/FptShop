@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ model.Name }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <br/>
+           <div class="col text-center">
+            <h2>MODEL DETAIL</h2>
+            </div>
+        </div>
+        <div class="row mt-3 mb-4">
+            <div class="col-md-4">
+                <img src="{{ asset ('images/' ~ model.Image) }}" width="300px" height="400px">
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h1 class="mt-4 mt-md-0">{{ model.Name }}</h1>
+            <h2>{{ model.price }} €</h2>
+            <hr>
+            <b>Description: </b>{{ model.description }}
+        </div>
+    </div>
+{% endblock %}

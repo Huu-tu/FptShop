@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View Size!{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+<a class="btn btn-primary" href="{{ path ('sizeCreate') }}">Create New Size</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Size</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for size in sizes %}
+        <tr>
+            <td scope="row">{{ size.Size }}</td>
+
+            <td scope="row"> 
+                <a class="btn btn-warning" href="{{ path ( 'sizeUpdate' , {'id' : size.id } ) }}">Update</a>
+                <a class="btn btn-danger" href="{{ path ( 'sizeDelete' , {'id' : size.id } ) }}"
+                                          onclick = "return confirm('Are you sure to delete ?')"
+                >Delete</a>
+            </td>
+        </tr> 
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
+

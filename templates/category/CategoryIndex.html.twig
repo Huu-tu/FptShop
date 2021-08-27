@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View Categories!{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+<a class="btn btn-primary" href="{{ path ('categoryCreate') }}">Create New Category</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Categories</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date</th>
+            <th scope="col">Image</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for category in categories %}
+        <tr>
+            <td scope="row">{{ category.Name }}</td>
+            <td scope="row">{{ category.Description }}</td>
+            <td scope="row">{{ category.Date | date('d/m/Y') }}</td>
+            <td scope="row">                
+                <img src="{{ asset ('images/' ~ category.Image) }}" width="300px" height="400px">
+            </td>
+            <td scope="row"> 
+                <a class="btn btn-warning" href="{{ path ( 'categoryUpdate' , {'id' : category.id } ) }}">Update</a>
+                <a class="btn btn-danger" href="{{ path ( 'categoryDelete' , {'id' : category.id } ) }}"
+                                          onclick = "return confirm('Are you sure to delete ?')"
+                >Delete</a>
+            </td>
+        </tr> 
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
+
